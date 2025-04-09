@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>molnienosniy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Скрипты фона -->
+    <script src="./three.min.js"></script>
+    <script src="./vanta.waves.min.js"></script>
+    <script src="./app.js"></script>
+
+    <div class="intro" id="intro"></div>
+
+    <!-- 🎵 Музыка -->
+    <audio id="bg-music" loop>
+      <source src="music.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+      <div class="header">
+        <img src="banner.jpg" alt="Cover" />
+        <div class="text-overlay">
+          <p>нету лучшей красоты чем писать с высоты</p>
+        </div>
+      </div>
+
+      <div class="profile">
+        <img id="avatar" src="avatar.jpg" alt="Profile" />
+        <h1>molnienosniy</h1>
+        <p>subculture?</p>
+        <button id="play-music">▶ Воспроизвести музыку</button>
+      </div>
+
+      <div class="links">
+        <a class="link" href="https://t.me/qweexzq" target="_blank">PRICE</a>
+        <a class="link" href="https://t.me/+-h7dZ58w0hFiNjg6" target="_blank"
+          >PROJECT</a
+        >
+        <a class="link" href="https://t.me/qweexzsy" target="_blank">INFO</a>
+      </div>
+    </div>
+
+    <!-- Скрипт управления музыкой -->
+    <script>
+      const audio = document.getElementById("bg-music");
+      const playButton = document.getElementById("play-music");
+      const avatar = document.getElementById("avatar");
+
+      // Клик по кнопке: вкл/выкл музыку
+      playButton.addEventListener("click", () => {
+        if (playButton.textContent === "▶ Воспроизвести музыку") {
+          audio.play();
+          playButton.textContent = "❚❚ Остановить музыку";
+        } else {
+          audio.pause();
+          playButton.textContent = "▶ Воспроизвести музыку";
+        }
+      });
+
+      // Клик по аватарке — откроется в новой вкладке + музыка остановится
+      avatar.addEventListener("click", () => {
+        audio.pause();
+        audio.currentTime = 0;
+        playButton.textContent = "▶ Воспроизвести музыку";
+        window.open("avatar.jpg", "_blank");
+      });
+
+      // Остановка музыки при выходе со страницы
+      window.addEventListener("beforeunload", () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </body>
+</html>
